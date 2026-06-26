@@ -1,0 +1,91 @@
+逐节证明颗粒度与主题主干审计：mup_tensor_programs_lecture7.md
+时间：2026-06-01 08:19 EDT
+
+结论：通过，可作为修复版中文讲义发布。
+
+失败复盘：上一版第 7 讲的根本问题不是中文不够顺，也不是目录结构不够完整，而是主题主干错位。用户问的是 μP / Tensor Programs 的训练动力学入门，读者需要知道 μP 怎样设初始化、abc parametrization 是什么、Gaussian conditioning 为什么出现、固定多步到底怎么算。上一版转去讲初始化核和两隐藏层核递推，虽然是相关数学，但没有回答 μP 训练动力学的中心问题，所以属于标准失败。
+
+本次审计按新版“主题主干覆盖门槛”执行：
+- 用户点名或标题承诺的对象必须进入正文实质章节，不能只出现在术语表或来源列表。
+- 对 μP / Tensor Programs 设置与训练动力学讲义，必须覆盖 abc 参数化、μP 初始化与学习率尺度、Gaussian conditioning / 初始 logit 条件化的作用、固定步多步递推。
+- 讲义必须给出可复现的手算流程；初始化核计算不能替代训练递推。
+
+来源核验：
+- Tensor Programs IV / Yang and Hu, Feature Learning in Infinite-Width Neural Networks：abc 参数化、MLP 初始化稳定条件、μP 指数、Gaussian conditioning、finite-time evolution。
+- Tensor Programs V / Yang et al., Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer：实用 μP 初始化与学习率缩放，特别是两隐藏层 MLP 的 base-width / width-ratio 设置。
+- Tensor Programs I：有限维张量程序、高斯经验平均和极限递推的基础语言。
+
+0. 一页摘要、目录、前置路线图、术语约定
+- 数学任务：开篇直接说明本讲回答“μP 怎么设、abc 怎么读、多步怎么递推、Gaussian conditioning 为什么必要”。
+- 学习负荷判断：摘要压缩，没有把前置内容扩成长介绍。
+- 术语处理：abc parametrization、Gaussian conditioning、initial-logit conditioning、fixed-step 等英文第一次出现时有中文解释。
+- 判断：通过。
+
+1. 预备知识、学习目标与主题主干
+- 数学任务：把本讲主干列成四个必须会的动作：读 abc；设置 μP；理解条件化；算多步。
+- 失败修复点：明确承认初始化核不是本讲中心，防止再次偏题。
+- 读者复现目标：读者读完应能独立写一隐藏层 μP 的有限步递推。
+- 判断：通过。
+
+2. 贯穿例子：一隐藏层 μP 网络
+- 数学任务：给出单一贯穿网络、参数尺度和训练对象。
+- 证明义务：为后文的 abc、更新尺度、递推变量建立统一符号。
+- 读者卡点：区分有限坐标变量、经验平均和极限随机变量。
+- 判断：通过。
+
+3. 核心定义：abc 参数化
+- 数学任务：定义 W^l=n^{-a_l} w^l、w^l~N(0,n^{-2b_l})、学习率 η n^{-c_l}，并解释 a,b,c 的作用。
+- 证明义务：说明 a+b 控制初始化前向尺度，c 控制更新尺度。
+- 来源一致性：符合 Tensor Programs IV 的 abc parametrization 语言。
+- 判断：通过。
+
+4. μP 初始化和学习率怎么设置
+- 数学任务：给出 MLP 的稳定初始化条件和 μP 指数选择：输入层有效权重 O(1)，隐藏层 O(1/sqrt n)，输出层 O(1/n)；SGD 中输入/偏置、隐藏、输出层的相对学习率尺度。
+- 证明义务：解释为什么输出层必须比标准参数化小，隐藏层更新才能保持 O(1) 的 feature-learning 效应。
+- 实用落地：包含 base width 宽度比版本，读者能按宽度 n/n0 设置。
+- 判断：通过。
+
+5. 证明尺度：标准参数化会爆，μP 不爆
+- 数学任务：比较标准参数化和 μP 在输出层更新后的 f_1 尺度。
+- 证明义务：逐项展开输出层更新对 logit 的贡献，说明标准参数化下出现 O(n) 项，而 μP 下经验平均保持 O(1)。
+- 读者卡点：避免把“初始化输出小”误读成“训练后输出也小”。
+- 判断：通过。
+
+6. 高斯条件化：为什么多步不能假装独立
+- 数学任务：说明 Gaussian conditioning 的最小形式：已观测线性投影后，Gaussian 权重等于投影部分加独立残差。
+- 证明义务：解释多步中同一个 W 被前向和反向重复使用，后续变量已依赖 W，所以不能在第二步把 W 当新独立矩阵。
+- 边界处理：说明 μP 输出初始化趋零时通常不需要非平凡 initial-logit conditioning；但深层/非零初始 logit 场景仍要条件化。
+- 判断：通过。
+
+7. 一隐藏层 μP 的固定步递推
+- 数学任务：给出 Z^U_t、Z^{nV}_t、Z^h_t、Z^x_t、f_t、χ_t 的极限递推。
+- 证明义务：从有限宽 SGD 更新逐项推出极限随机变量更新，说明经验平均如何变成期望。
+- 读者复现目标：给定训练样本序列，可以写出 t=0,1,2,... 的闭合递推。
+- 判断：通过。
+
+8. 贯穿例子的两步手算
+- 数学任务：具体写出第一步和第二步的计算顺序。
+- 证明义务：第二步显式使用第一步更新后的随机变量，不重新抽样；这是多步计算的核心。
+- 读者卡点：把“条件化/递推状态更新”与“每步重新采样高斯”分开。
+- 判断：通过。
+
+9. 深层网络中高斯条件化怎样进入多步
+- 数学任务：解释深层时需要把每层已观测到的前向/反向有限集合作为 conditioning data。
+- 证明义务：说明条件高斯残差产生新的独立高斯噪声，而投影项保留历史相关性。
+- 边界：不把深层完整 Master Theorem 证明塞入本讲，但明确下一步阅读路径。
+- 判断：通过。
+
+10. 复现测试、练习、误区、总结与来源
+- 数学任务：复现测试直接要求读者设置两隐藏层 μP 的初始化与 SGD 学习率，并写出两步递推框架。
+- 误区覆盖：包括把 abc 当符号游戏、忽略 Gaussian conditioning、只算初始化核、误读 μP 输出初始化、把固定步递推当训练到收敛。
+- 来源透明：标明 TP IV / TP V / TP I 的具体承载内容。
+- 判断：通过。
+
+验证记录：
+- `python3 -m py_compile skills/chinese-math-lecture-notes/scripts/validate_lecture_note.py`：通过。
+- `python3 skills/chinese-math-lecture-notes/scripts/validate_lecture_note.py --skill-dir skills/chinese-math-lecture-notes`：通过。
+- `python3 skills/chinese-math-lecture-notes/scripts/validate_lecture_note.py --note tmp/lecture-notes/mup_tensor_programs_lecture7.md --mode full --required-term 'abc 参数化|abc parametrization' --required-term 'Gaussian conditioning|高斯条件化' --required-term '初始化|learning-rate|学习率' --required-term '多步|fixed-step|递推'`：通过。
+- Notion 页面 `[redacted-notion-page-id]` 已更新为 `μP 与 Tensor Programs 第 7 讲：abc 参数化、初始化与多步训练递推`，connector readback 确认新标题和章节。
+- Managed-browser DOM QA：`requiredMissing=[]`，无 raw/literal LaTeX 泄漏，`tocLikeLinkCount=15`，`mathCount=858`，`coreMentions=8`，`spineHits=[abc 参数化, Gaussian conditioning, 高斯条件化, μP 初始化, 学习率, 多步, 递推]`。
+
+总体判断：这版修复了用户指出的实质漏项。后续同类讲义若缺少源文献/用户问题主干，即使目录、摘要、术语表和局部证明齐全，也必须判定失败并重写。

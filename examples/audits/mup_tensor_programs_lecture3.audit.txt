@@ -1,0 +1,13 @@
+Proof-granularity audit: μP 与 Tensor Programs 第 3 讲
+
+- Section 0: pass. Job: set prerequisites, learning goals, and dependency graph. It creates no theorem obligation; it states the lecture boundary and points to the fresh-matrix theorem versus general Yang Theorem 5.4.
+- Section 1: pass. Job: motivate typed language and define coordinate slices. Proof obligations are definitional. The ReLU H-var example computes the relevant empirical second moment, and the non-example explains why treating phi(g) as G-var breaks Gaussian closure.
+- Section 2: pass. Job: define G-var/H-var/A-var, MatMul, LinComb, Nonlin, and output inner products. It includes a concrete MLP program and a finite-input non-example. No central theorem is asserted here; the section prepares the semantics used in Sections 3 and 4.
+- Section 3: pass. Job: define recursive mu/Sigma semantics and compute a two-layer MLP. Proposition 3.3 has a full proof: LinComb mean/covariance, H-var second moment, MatMul covariance, bias addition, and independent readout output variance. The non-example tests the independent-readout hypothesis.
+- Section 4: pass. Job: provide the central complete proof inside the lecture. The fresh-matrix master theorem has explicit assumptions, proof route, full induction over input/LinComb/H-var/MatMul, conditional variance bound, convergence of conditional expectation, truncation for polynomial growth, hypotheses-use explanation, and a same-matrix-reuse non-example.
+- Section 5: pass with citation boundary. Job: state the full Yang NETSOR Master Theorem and explain the proof burden not covered by the fresh-matrix subtheorem. The section precisely cites Tensor Programs I Definition 4.1, Assumption 5.1, Definition 5.2, Definition 5.3, Theorem 5.4, and Appendix H; it does not present the full theorem as locally proved. The proof skeleton identifies conditional Gaussian projection, CoreSet/Basis/NullAvoid, rank stability, and the A/B/C error split.
+- Section 6: pass. Job: connect the language and master theorem to later μP scaling lectures. It creates no new mathematical theorem obligation; it gives a mapping table and misconception checks.
+- Section 7: pass. Job: provide tiered exercises from definitions to Appendix H dependency mapping and Tensor Programs IV preview.
+- Section 8: pass. Job: summarize the proven fresh-matrix result, the cited full theorem boundary, and the next lecture route.
+
+Overall: publishable lecture note. The central theorem inside this lecture is proved locally. The broader NETSOR Master Theorem is accurately bounded as a precise literature theorem with a proof skeleton rather than a hand-waved local proof.

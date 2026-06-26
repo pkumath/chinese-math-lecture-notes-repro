@@ -1,0 +1,12 @@
+Proof-granularity audit: μP 与 Tensor Programs 第 1 讲
+
+- Section 0: pass. Job: establish prerequisites, objectives, and dependency roadmap. No theorem/proof obligations created. Has learning goals and route table.
+- Section 1: pass. Job: introduce coordinate empirical laws and maximal finite update. Definitions include motivation, examples, non-examples, and a misconception boundary. No central theorem stated here; proof obligations deferred to Sections 2 and 4.
+- Section 2: pass. Job: prove baby Tensor Program master theorem for one Gaussian matrix multiplication. Central theorem has exact hypotheses, proof route, full conditional-Gaussian/conditional-LLN/truncation proof, hypotheses-use explanation, worked two-input example, and heavy-tail non-example.
+- Section 3: pass. Job: derive NNGP recursion from Section 2. Central theorem has full induction proof, layerwise covariance calculation, explicit use of bias sharing, hypotheses-use explanation, linear-activation example, and shared-bias non-example.
+- Section 4: pass. Job: distinguish lazy NTK updates from maximal finite toy μP updates. Theorems 4.1 and 4.2 have explicit gradient calculations, update-size proofs, critical-scaling proof, output-finiteness LLN argument, hypotheses-use explanation, examples and non-examples.
+- Section 5: pass with label discipline. Job: map local proven results to Tensor Programs I-V and μTransfer. It states literature-level imported theorems as citations/roadmap, not as locally proved claims. It does not create an unproved local theorem obligation; it explicitly marks the local proof boundary and points to sources.
+- Section 6: pass. Job: exercises testing definitions, proof steps, new examples, counterexamples, and research extensions. No proof obligations created.
+- Section 7: pass. Job: summary and next steps; no theorem obligations created.
+
+Overall: publishable lecture note. The note is honest about the full Tensor Programs IV/V proof burden and does not present proof sketches as completed proofs.

@@ -1,0 +1,13 @@
+Proof-granularity audit: μP 与 Tensor Programs 第 2 讲
+
+- Section 0: pass. Job: set reader prerequisites and learning goals. It creates no theorem obligation; it gives a concrete roadmap and section-end memory compression.
+- Section 1: pass. Job: define base width, target width, width multiplier, finite/infinite dimensions, and why delta shapes matter. Definitions have examples and non-examples; proof obligation is conceptual rather than theorem-level and is discharged by the engineering/mathematical mapping.
+- Section 2: pass. Job: state and prove the μP initialization scale table for a three-layer MLP. Theorem 2.2 has explicit assumptions, proof route, complete variance calculations, hypotheses-use explanation, worked base-to-target example, and non-example for standard readout initialization.
+- Section 3: pass. Job: prove that small μP readout initialization does not prevent finite first-step output motion. Theorem 3.1 and Proposition 3.2 give explicit gradient/update calculations, scaling proof, hypotheses-use explanation, and an optimizer non-example.
+- Section 4: pass with implementation label. Job: translate the mathematical scaling rules into the Microsoft mup workflow. It is an implementation section, not a theorem section; it includes concrete code, order-of-operations, and failure boundaries.
+- Section 5: pass. Job: justify coord check as the empirical form of coordinate-law stability. Definition 5.1 and Proposition 5.2 have a complete proof via empirical-law convergence, examples of two common implementation failures, and section-end compression.
+- Section 6: pass. Job: collect misconceptions and boundary conditions. It creates no new proof obligations and explicitly marks the scope boundary relative to full Tensor Programs V.
+- Section 7: pass. Job: tiered exercises from definition checks to research-facing implementation plans.
+- Section 8: pass. Job: summarize the practical initialization answer and route the next lecture.
+
+Overall: publishable lecture note. The central initialization and first-step update claims are proved locally; full Tensor Programs V claims are cited as source-level background rather than presented as locally proved results.

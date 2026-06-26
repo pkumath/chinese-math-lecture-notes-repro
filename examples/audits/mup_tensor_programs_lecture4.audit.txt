@@ -1,0 +1,17 @@
+Proof-granularity audit: μP 与 Tensor Programs 第 4 讲
+
+Checklist source: skills/chinese-math-lecture-notes/references/proof-granularity-audit.md
+
+- Section 0: pass - Establishes prerequisites, goals, roadmap, and dependency diagram. It creates no theorem obligation. It correctly states that the lecture's mathematical burden is the outer-product update lemma, the one-hidden-layer comparison theorem, and the abc classification citation.
+- Section 1: pass - Defines feature coordinates and feature kernel, distinguishes output learning from feature learning, and gives a worked NTK lazy-feature example plus a loss-only non-example. The proof obligation is only a Lipschitz estimate for feature-kernel stasis; the section supplies the key calculation and points to the full one-hidden theorem in Section 3.
+- Section 2: pass - Central mathematical section. It states and fully proves the outer-product update lemma, including the exact norm calculation and the fresh-random-matrix contrast. Hypotheses are explicitly used: 1/n scaling, empirical inner-product convergence, nondegeneracy, and coordinate-size assumptions. This section is not a slogan; it discharges the main local Tensor Program scaling mechanism.
+- Section 3: pass - Central comparison theorem. It states SP/NTK/muP conventions, proves the NTK and muP one-step gradient scales by direct chain-rule calculations, and proves the naive-SP instability/stabilized-lazy alternatives. It includes assumptions, proof route, hypotheses-use explanation, an example, and a non-example. The section is publishable as a lecture proof rather than only a table.
+- Section 4: pass - Derives hidden-matrix maximal-update scaling from the outer-product lemma. Proposition 4.2 is fully proved, including the exact preactivation update calculation and hypotheses-use explanation. The layer-type table is interpretive but grounded in the proved hidden-matrix local calculation and the prior readout discussion.
+- Section 5: pass - This section intentionally imports the general deep abc-parametrization classification rather than reproving Appendix N. It cites the exact Tensor Programs IV definitions and theorems used, states their hypotheses/roles at lecture granularity, and explains how each result supports the muP derivation. Since the imported proof is paper-scale, precise citation is appropriate.
+- Section 6: pass - Gives the local maximal finite uniqueness proposition with a complete exponent calculation. It includes hypotheses-use explanation and common misconceptions. This section converts the scaling table into a mathematical phase judgment.
+- Section 7: pass - Exercises are tiered from definition checks through proof reconstruction, new examples, boundary cases, and research-level reading tasks.
+- Section 8: pass - Summary compresses the lecture's proof spine and explains the transition to Lecture 5. It does not introduce unsupported new claims.
+
+Overall: publishable lecture note.
+
+Repair actions needed before publication: none. Validator passed for both skill structure and full note. The only external theorem burden is the Tensor Programs IV abc classification, which is explicitly cited as a standard imported theorem with the relevant theorem numbers and semantic role.

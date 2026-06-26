@@ -1,0 +1,10 @@
+Proof-granularity audit:
+- 读者画像、预备知识与目标: pass - 明确学习目标和先修，不产生证明义务。
+- 两种 minimizer convergence / 路线图: pass - 数学任务是区分 optimization distance 与 statistical estimator distance；包含 flat-direction 非例子，解释 loss gap 不足。
+- 文献地图: pass as reference-map section - 明确是参考地图，不冒充证明章节；每条文献按证明机制分类。
+- Running example / LASSO theorem: pass - 给出定理、假设、basic inequality、score control、L1 decomposition、cone、RE-to-ell2、ell1/prediction rate完整逐步证明，并逐条说明假设在哪里用。
+- RSC/decomposable framework: pass - 数学任务是抽象上一节 proof spine；给出δL定义、dual norm score bound、decomposability/RSC如何复原LASSO rate。作为框架迁移章节，不声称完整复证NRWY全部常数。
+- Luo--Tseng路线: pass as reference-map/proof-spine section - 明确标为参考地图；给出 residual、EB、sufficient decrease、cost-to-go、QG 到 distance 的证明链，未把EB本身冒充已完整证明。
+- 常见误解与判断清单: pass - 提供反误区和paper阅读检查表。
+- 练习与参考文献: pass - 分层练习覆盖定义检查、证明复现、反例和研究扩展。
+Overall: publishable lecture note.
