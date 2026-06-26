@@ -4,6 +4,16 @@
 
 它不是完整私有工作区的镜像。Notion 页面 ID、浏览器会话脚本、本地 token 路径、源论文 PDF/全文提取文件都已移除或改成 manifest，避免公开私有数据或重新分发版权文本。
 
+## OpenClaw 快速接管
+
+如果你想把这个流程交给另一个 OpenClaw，只需要把仓库链接和这句指令给它：
+
+```text
+请使用 https://github.com/pkumath/chinese-math-lecture-notes-repro 复现中文数学讲义生成流程。先读 `OPENCLAW_HANDOFF.md`，再按 `prompts/openclaw-handoff-prompt.zh.md` 的执行合同生成讲义、运行 validator、做 proof-granularity audit。
+```
+
+完整可复制 prompt 见 `prompts/openclaw-handoff-prompt.zh.md`；按主题填空的短模板见 `prompts/topic-request-template.zh.md`。
+
 ## 仓库结构
 
 - `skill/`: 讲义生成 skill 的公开版，包括硬工作流、rubric 和 validator。
