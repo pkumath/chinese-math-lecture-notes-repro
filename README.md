@@ -14,12 +14,17 @@
 
 完整可复制 prompt 见 `prompts/openclaw-handoff-prompt.zh.md`；按主题填空的短模板见 `prompts/topic-request-template.zh.md`。
 
+## English version
+
+英文数学讲义版本已加入：入口见 `OPENCLAW_HANDOFF.en.md`，完整 prompt 见 `prompts/openclaw-handoff-prompt.en.md`，短模板见 `prompts/topic-request-template.en.md`，skill 目录是 `skill-en/`。英文说明页见 `README.en.md`。
+
 ## 仓库结构
 
-- `skill/`: 讲义生成 skill 的公开版，包括硬工作流、rubric 和 validator。
+- `skill/`: 中文讲义生成 skill 的公开版，包括硬工作流、rubric 和 validator。
+- `skill-en/`: 英文讲义生成 skill 的公开版，包括硬工作流、rubric 和 validator。
 - `scripts/`: 可直接运行的 validator 和样例审计脚本。
-- `standards/`: 中文数学讲义标准和从 agent 硬规则中抽出的讲义相关规则。
-- `templates/`: 新讲义起草模板。
+- `standards/`: 中文/英文数学讲义标准和从 agent 硬规则中抽出的讲义相关规则。
+- `templates/`: 中文/英文新讲义起草模板。
 - `examples/notes/`: 生成过的完整 Markdown 讲义样例。
 - `examples/fragments/`: 写作过程中保留的局部重写片段。
 - `examples/audits/`: 证明颗粒度 / 发布前 audit 样例。
@@ -32,6 +37,7 @@
 
 ```bash
 python3 scripts/validate_lecture_note.py --skill-dir skill
+python3 scripts/validate_lecture_note.py --language en --skill-dir skill-en
 python3 scripts/validate_lecture_note.py --note examples/notes/mup_tensor_programs_lecture7.md --mode full
 python3 scripts/audit_examples.py --current-only
 ```
